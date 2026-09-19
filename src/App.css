@@ -1,0 +1,753 @@
+/* =========================
+   GENERAL
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: #222;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    width: 100%;
+    padding: 15px 40px;
+    background: white;
+    border-bottom: 2px solid #ddd;
+}
+
+nav ul {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: #222;
+    font-size: 18px;
+}
+
+nav a:hover {
+    color: #2563eb;
+}
+
+
+/* =========================
+   BANNER
+========================= */
+
+.banner {
+    position: relative;
+    width: 100%;
+}
+
+.banner img {
+    display: block;
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    padding: 8px;
+
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+
+    text-align: center;
+
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.overlay h1 {
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+.banner:hover .overlay {
+    opacity: 1;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    max-width: 800px;
+    margin: 50px auto 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.about img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.about p {
+    color: #423e3e;
+    line-height: 1.6;
+}
+
+.about hr {
+    width: 270px;
+    border: 0;
+    border-top: 3px solid black;
+    margin: 20px auto 10px;
+}
+
+
+/* =========================
+   PROJECTS
+========================= */
+
+#projects {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#projects h2 {
+    margin-top: 0;
+}
+
+#projects > p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.project {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 25px auto;
+    text-align: left;
+}
+
+.project img {
+    width: 170px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.project p {
+    color: #101010;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#projects hr {
+    width: 270px;
+    border: 0;
+    border-top: 3px solid black;
+    margin: 35px auto;
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+#photos {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#photos h2 {
+    font-size: 28px;
+}
+
+.Gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.Gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+
+/* =========================
+   FEATURED ARTICLES
+========================= */
+
+.featured-articles {
+    padding: 50px 20px 35px;
+    text-align: center;
+}
+
+.featured-articles h2 {
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 35px;
+}
+
+.article-container {
+    max-width: 1050px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 70px;
+}
+
+
+/* =========================
+   ARTICLE + TUTORIAL CARDS
+========================= */
+
+.article-card,
+.tutorial-card {
+    text-align: left;
+
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Same image area for all 6 */
+
+.article-card img,
+.tutorial-card img {
+    width: 100%;
+    height: 160px;
+
+    object-fit: contain;
+
+    background: #f5f9fc;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 12px;
+
+    display: block;
+}
+
+
+/* Titles */
+
+.article-card h3,
+.tutorial-card h3 {
+    font-size: 18px;
+
+    margin: 14px 0 8px;
+
+    color: #111;
+}
+
+
+/* Description */
+
+.article-card p,
+.tutorial-card p {
+    color: #555;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    min-height: 65px;
+
+    margin: 0;
+}
+
+
+/* Rating and author */
+
+.article-info,
+.tutorial-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    border-top: 1px solid #ddd;
+
+    margin-top: auto;
+    padding-top: 10px;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   ARTICLE TEXT
+========================= */
+
+.article-card h3 {
+    font-size: 18px;
+    margin: 12px 0 8px;
+}
+
+.article-card p {
+    color: #555;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    min-height: 65px;
+
+    margin: 0;
+}
+
+.article-info {
+    display: flex;
+    justify-content: space-between;
+
+    border-top: 2px solid #444;
+
+    margin-top: auto;
+    padding-top: 8px;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   SEE ALL BUTTON
+========================= */
+
+.see-all {
+    margin-top: 35px;
+
+    padding: 10px 28px;
+
+    border: none;
+    border-radius: 22px;
+
+    background: #cfcfcf;
+
+    color: #222;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.see-all:hover {
+    background: #b9b9b9;
+}
+
+
+/* =========================
+   FEATURED TUTORIALS
+========================= */
+
+.featured-tutorials {
+    padding: 25px 20px 50px;
+    text-align: center;
+}
+
+.featured-tutorials h2 {
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 35px;
+}
+
+.tutorial-container {
+    max-width: 1050px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 70px;
+}
+
+
+/* =========================
+   TUTORIAL TEXT
+========================= */
+
+.tutorial-card h3 {
+    font-size: 18px;
+    margin: 12px 0 8px;
+}
+
+.tutorial-card p {
+    color: #555;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    min-height: 65px;
+
+    margin: 0;
+}
+
+.tutorial-info {
+    display: flex;
+    justify-content: space-between;
+
+    border-top: 2px solid #444;
+
+    margin-top: auto;
+    padding-top: 8px;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   NEWSLETTER
+========================= */
+
+.newsletter {
+    text-align: center;
+
+    padding: 60px 20px;
+
+    background: white;
+
+    border-top: 3px solid black;
+}
+
+.newsletter h2 {
+    font-size: 30px;
+
+    margin-top: 0;
+    margin-bottom: 10px;
+
+    color: #111;
+}
+
+.newsletter p {
+    color: #555;
+
+    font-size: 16px;
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+.subscribeForm {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.subscribeForm input {
+    width: 400px;
+
+    padding: 14px 16px;
+
+    font-size: 15px;
+
+    border: 2px solid #dcdcdc;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.subscribeForm input:focus {
+    border-color: #2563eb;
+}
+
+.subscribeForm button {
+    padding: 14px 35px;
+
+    font-size: 15px;
+
+    border: 2px solid black;
+
+    border-radius: 8px;
+
+    background: black;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.subscribeForm button:hover {
+    background: white;
+    color: black;
+}
+
+.subscribe-message {
+    margin-top: 18px;
+    margin-bottom: 0;
+
+    font-weight: bold;
+
+    color: #2563eb;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.main-footer {
+    background: #eef6ff;
+
+    color: #222;
+
+    border-top: 3px solid black;
+}
+
+.footer-links {
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 45px 20px 25px;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 50px;
+
+    text-align: left;
+}
+
+.footer-links h3 {
+    color: black;
+
+    font-size: 21px;
+
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.footer-links p {
+    color: #555;
+
+    margin: 9px 0;
+}
+
+
+/* =========================
+   SOCIAL LINKS
+========================= */
+
+.social-links {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 15px;
+}
+
+.social-links span {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 50%;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   FOOTER BOTTOM
+========================= */
+
+.footer-bottom {
+    text-align: center;
+
+    padding: 15px 20px 35px;
+}
+
+.footer-bottom h3 {
+    color: black;
+
+    margin-bottom: 20px;
+}
+
+.footer-bottom a {
+    color: black;
+
+    text-decoration: none;
+
+    margin: 0 20px;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   RESPONSIVE - TABLET
+========================= */
+
+@media (max-width: 800px) {
+
+    .Gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .article-container,
+    .tutorial-container {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        max-width: 400px;
+    }
+}
+
+
+/* =========================
+   RESPONSIVE - FOOTER
+========================= */
+
+@media (max-width: 700px) {
+
+    .subscribeForm {
+        flex-direction: column;
+    }
+
+    .subscribeForm input {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .subscribeForm button {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
+
+
+/* =========================
+   RESPONSIVE - MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    nav {
+        padding: 15px 20px;
+    }
+
+    nav ul {
+        gap: 20px;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+
+    .banner img {
+        height: 300px;
+    }
+
+    .about {
+        margin-top: 30px;
+    }
+
+    .project {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .project img {
+        width: 100%;
+        max-width: 300px;
+
+        height: 180px;
+    }
+
+    .Gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-articles,
+    .featured-tutorials {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .article-card img,
+    .tutorial-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+    }
+
+    .footer-bottom a {
+        display: block;
+
+        margin: 10px 0;
+    }
+}
