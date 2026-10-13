@@ -32,7 +32,7 @@ function Navbar() {
             <input type="text" placeholder="Search..." className="search" />
 
             <div className="nav-links">
-                <span>Post</span>
+                <Link to="/post">Post</Link>
 
                 {user ? (
                     <button onClick={handleLogout} className="logout-btn">
