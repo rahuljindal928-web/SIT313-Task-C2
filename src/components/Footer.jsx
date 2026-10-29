@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 
 function Footer() {
 
@@ -17,7 +18,7 @@ function Footer() {
             {/* Newsletter */}
             <section className="newsletter">
 
-                <h2>Join DEV@Deakin</h2>
+             <h2>SIGN UP FOR OUR DAILY INSIDER</h2>
 
                 <p>
                     Want to stay updated with DEV@Deakin?
@@ -28,7 +29,7 @@ function Footer() {
 
                     <input
                         type="email"
-                        placeholder="Enter your email address"
+                        placeholder="Enter your email"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
                         required
@@ -75,11 +76,19 @@ function Footer() {
                             <strong> rahul9129.ai25@chitkara.edu.in</strong>
                         </p>
 
-                        <div className="social-links">
-                            <span>f</span>
-                            <span>X</span>
-                            <span>in</span>
-                        </div>
+                       <div className="social-links">
+    <span aria-label="Facebook" role="img">
+        <FaFacebookF />
+    </span>
+
+    <span aria-label="Twitter" role="img">
+        <FaTwitter />
+    </span>
+
+    <span aria-label="Instagram" role="img">
+        <FaInstagram />
+    </span>
+</div>
 
                     </div>
 

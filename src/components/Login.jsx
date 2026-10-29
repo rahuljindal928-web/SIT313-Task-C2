@@ -1,7 +1,11 @@
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup
+} from "firebase/auth";
 import { auth } from "../firebase";
 
 function Login() {
@@ -18,15 +22,37 @@ function Login() {
         setLoading(true);
 
         try {
-            await signInWithEmailAndPassword(auth, email.trim(), password);
-            navigate("/");
+            await signInWithEmailAndPassword(
+                auth, email.trim(), password
+            );
 
+            navigate("/");
         } catch (err) {
             setError("Incorrect email or password. Please try again or sign up.");
             console.error(err);
+        } finally {
+            setLoading(false);
         }
+    }
 
-        setLoading(false);
+    async function handleGoogleLogin() {
+        setError("");
+        setLoading(true);
+
+        try {
+            const provider = new GoogleAuthProvider();
+
+            await signInWithPopup(auth, provider);
+
+            navigate("/");
+        } catch (err) {
+            if (err.code !== "auth/popup-closed-by-user") {
+                setError("Google login failed. Please try again.");
+                console.error(err);
+            }
+        } finally {
+            setLoading(false);
+        }
     }
 
     return (
@@ -58,6 +84,17 @@ function Login() {
                     {loading ? "Logging in..." : "Login"}
                 </button>
             </form>
+
+            <p>OR</p>
+
+            <button
+                type="button"
+                className="google-btn"
+                onClick={handleGoogleLogin}
+                disabled={loading}
+            >
+                Continue with Google
+            </button>
 
             <p>
                 Don't have an account? <Link to="/signup">Sign Up</Link>
