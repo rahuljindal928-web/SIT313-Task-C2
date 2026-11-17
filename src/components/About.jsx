@@ -2,7 +2,7 @@ import profileImage from "../assets/IMG_4811 (1).PNG";
 
 function About() {
     return (
-        <section id="info" className="about">
+       <section className="about" id="about">
 
             <img src={profileImage} alt="Rahul Jindal" />
 

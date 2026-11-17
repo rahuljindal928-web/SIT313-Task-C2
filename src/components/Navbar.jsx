@@ -24,8 +24,10 @@ function Navbar() {
     // Close profile menu when clicking outside
     useEffect(() => {
         function handleClickOutside(event) {
-            if (dropdownRef.current &&
-                !dropdownRef.current.contains(event.target)) {
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target)
+            ) {
                 setShowDropdown(false);
             }
         }
@@ -71,15 +73,16 @@ function Navbar() {
                 className={`nav-links ${menuOpen ? "active" : ""}`}
             >
                 <a href="/#about" onClick={closeMenu}>About</a>
-                <a href="/#projects" onClick={closeMenu}>Work</a>
-                <a href="/#contact" onClick={closeMenu}>Contact</a>
+<a href="/#projects" onClick={closeMenu}>Work</a>
+<a href="/#contact" onClick={closeMenu}>Contact</a>
                 <Link to="/post" onClick={closeMenu}>Post</Link>
             </div>
 
-            {/* Login or profile stays outside hamburger menu */}
+            {/* Login, Signup or Profile */}
             <div className="nav-account">
                 {user ? (
                     <div className="profile-container" ref={dropdownRef}>
+
                         <button
                             type="button"
                             className="profile-icon"
@@ -92,6 +95,7 @@ function Navbar() {
 
                         {showDropdown && (
                             <div className="profile-dropdown">
+
                                 <div className="profile-email">
                                     {user.email}
                                 </div>
@@ -105,17 +109,28 @@ function Navbar() {
                                 >
                                     Logout
                                 </button>
+
                             </div>
                         )}
                     </div>
                 ) : (
-                    <Link
-                        to="/login"
-                        className="login-btn"
-                        onClick={closeMenu}
-                    >
-                        Login
-                    </Link>
+                    <>
+                        <Link
+                            to="/signup"
+                            className="signup-btn"
+                            onClick={closeMenu}
+                        >
+                            Sign Up
+                        </Link>
+
+                        <Link
+                            to="/login"
+                            className="login-btn"
+                            onClick={closeMenu}
+                        >
+                            Login
+                        </Link>
+                    </>
                 )}
             </div>
 

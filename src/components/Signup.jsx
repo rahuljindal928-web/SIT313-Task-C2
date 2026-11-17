@@ -65,7 +65,7 @@ function Signup() {
 
     return (
         <div className="signup-page">
-            <h2>Create an Account</h2>
+          <h2>Create a DEV@Deakin Account</h2>
 
             <form className="signup-form" onSubmit={handleSignup}>
                 <label>Full Name</label>
