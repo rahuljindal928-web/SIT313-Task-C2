@@ -19,16 +19,19 @@ function Signup() {
         e.preventDefault();
         setError("");
 
+        // Validate full name
         if (name.trim().split(/\s+/).length < 2) {
             setError("Please enter your first and last name");
             return;
         }
 
+        // Validate password length
         if (password.length < 6) {
             setError("Password must be at least 6 characters");
             return;
         }
 
+        // Check confirm password
         if (password !== confirmPassword) {
             setError("Passwords do not match");
             return;
@@ -37,37 +40,67 @@ function Signup() {
         setLoading(true);
 
         try {
-            const userAccount = await createUserWithEmailAndPassword(
-                auth, email.trim(), password
+            // Check Firebase project
+            console.log(
+                "Connected Firebase Project:",
+                auth.app.options.projectId
             );
 
+            console.log("Starting Firebase registration...");
+
+            // Create user in Firebase Authentication
+            const userAccount = await createUserWithEmailAndPassword(
+                auth,
+                email.trim(),
+                password
+            );
+
+            console.log("Firebase account created successfully");
+            console.log("User UID:", userAccount.user.uid);
+
+            // Save user information in Firestore
             await setDoc(doc(db, "users", userAccount.user.uid), {
                 fullName: name.trim(),
                 email: userAccount.user.email
             });
 
+            console.log("Firestore profile saved successfully");
+
+            // Logout and redirect to Login page
             await signOut(auth);
+
+            console.log("Registration completed successfully");
+
             navigate("/login");
 
         } catch (err) {
+            console.error("Signup error:", err.code, err.message);
+
             if (err.code === "auth/email-already-in-use") {
                 setError("This email is already registered");
             } else if (err.code === "auth/invalid-email") {
                 setError("Please enter a valid email");
+            } else if (err.code === "auth/weak-password") {
+                setError("Please use a stronger password");
+            } else if (err.code === "permission-denied" ||
+                       err.code === "firestore/permission-denied") {
+                setError("Firestore permission denied. Check database rules.");
             } else {
                 setError("Registration failed. Please try again.");
-                console.error(err);
             }
-        }
 
-        setLoading(false);
+        } finally {
+            setLoading(false);
+        }
     }
 
     return (
         <div className="signup-page">
-          <h2>Create a DEV@Deakin Account</h2>
+
+            <h2>Create a DEV@Deakin Account</h2>
 
             <form className="signup-form" onSubmit={handleSignup}>
+
                 <label>Full Name</label>
                 <input
                     type="text"
@@ -104,16 +137,23 @@ function Signup() {
                     required
                 />
 
-                {error && <p style={{ color: "red" }}>{error}</p>}
+                {error && (
+                    <p style={{ color: "red" }}>
+                        {error}
+                    </p>
+                )}
 
                 <button type="submit" disabled={loading}>
                     {loading ? "Creating..." : "Create"}
                 </button>
+
             </form>
 
             <p>
-                Already have an account? <Link to="/login">Login</Link>
+                Already have an account?{" "}
+                <Link to="/login">Login</Link>
             </p>
+
         </div>
     );
 }
