@@ -76,7 +76,7 @@ function NewPost() {
                     <label>Title</label>
                     <input
                         type="text"
-                        placeholder="Enter a title"
+                        placeholder="Start your question with how, what, why, etc."
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
@@ -105,7 +105,7 @@ function NewPost() {
                     <label>Title</label>
                     <input
                         type="text"
-                        placeholder="Enter a title"
+                       placeholder="Enter a descriptive title"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
